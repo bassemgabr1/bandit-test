@@ -3,7 +3,7 @@ name: PR Check
 
 on:
   push:
-
+        branches: [ main ]
   bandit-test:
     name: bandit-test 🔎 🔒
     runs-on: ubuntu-latest
