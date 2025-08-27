@@ -4,24 +4,25 @@ name: PR Check
 on:
   push:
         branches: [ main ]
-  bandit-test:
-    name: bandit-test 🔎 🔒
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          ref: ${{ github.ref }}
-      - name: Get Changed Files
-        id: changed-files
-        run: echo "files=$(echo -n $(git diff --name-only origin/${{ github.event.repository.default_branch }} || echo '/dev/null'))" >> $GITHUB_OUTPUT
-      - name: Bandit Scan
-        uses: bassemgabr1/bandit-action@master
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SLACK_TOKEN: ${{ secrets.SLACK_TOKEN_BASSEM }}
-          path: ${{ steps.changed-files.outputs.files }}
-          level: medium
-          confidence: high
-          exit_zero: "${{ env.BANDIT_SAST_EXIT_ZERO }}"
+  jobs:
+    bandit-test:
+      name: bandit-test 🔎 🔒
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout Code
+          uses: actions/checkout@v4
+          with:
+            fetch-depth: 0
+            ref: ${{ github.ref }}
+        - name: Get Changed Files
+          id: changed-files
+          run: echo "files=$(echo -n $(git diff --name-only origin/${{ github.event.repository.default_branch }} || echo '/dev/null'))" >> $GITHUB_OUTPUT
+        - name: Bandit Scan
+          uses: bassemgabr1/bandit-action@master
+          with:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            SLACK_TOKEN: ${{ secrets.SLACK_TOKEN_BASSEM }}
+            path: ${{ steps.changed-files.outputs.files }}
+            level: medium
+            confidence: high
+            exit_zero: "${{ env.BANDIT_SAST_EXIT_ZERO }}"
