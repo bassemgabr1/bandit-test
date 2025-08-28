@@ -25,6 +25,7 @@ jobs:
           SLACK_USERNAME: bandit-test
           SLACK_CHANNEL: bassem-test
           SLACK_NOTIFY: true
+          exit_zero: DEFAULT
           path: ${{ steps.changed-files.outputs.files }}
           level: medium
           confidence: high
