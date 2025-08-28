@@ -1,0 +1,1 @@
+echo 'CLOUD_STORAGE_SERVICE_ACCOUNT = eval(os.getenv("CLOUD_STORAGE_SERVICE_ACCOUNT"))' > file.py 
