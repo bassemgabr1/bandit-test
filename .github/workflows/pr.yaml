@@ -20,7 +20,7 @@ jobs:
       - name: Bandit Scan
         uses: bassemgabr1/bandit-action@master
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.XGITHUB_TOKEN }}
           SLACK_TOKEN: ${{ secrets.SLACK_TOKEN_BASSEM }}
           path: ${{ steps.changed-files.outputs.files }}
           level: medium
