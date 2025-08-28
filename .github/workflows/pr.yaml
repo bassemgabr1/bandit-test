@@ -28,4 +28,3 @@ jobs:
           path: ${{ steps.changed-files.outputs.files }}
           level: medium
           confidence: high
-          exit_zero: "${{ env.BANDIT_SAST_EXIT_ZERO }}"
