@@ -22,6 +22,9 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.XGITHUB_TOKEN }}
           SLACK_TOKEN: ${{ secrets.SLACK_TOKEN_BASSEM }}
+          SLACK_USERNAME: bandit-test
+          SLACK_CHANNEL: bassem-test
+          SLACK_NOTIFY: true
           path: ${{ steps.changed-files.outputs.files }}
           level: medium
           confidence: high
